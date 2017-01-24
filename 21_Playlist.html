@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Music</title>
+	<script src="jquery.min.js"></script>
+  <link rel="shortcut icon" href="audio.ico">
+  <style type="text/css">
+		.image{
+    background-image: url("Tree.png");
+}
+.active a{color: #03c;text-decoration:none;}
+div.scroll {
+    width: 300px;
+    height: 300px;
+    overflow: scroll;
+}
+  #playlist{
+    background:#000; padding:20px;
+  }
+  audio{
+    background:#000;width:280px;padding:10px;
+  }
+  audio:hover{
+    background-color: #03c;
+  }
+li a{
+  color:#ffffff;background:#000000;padding:5px;display:block; border-right: solid; border-left: solid;
+  }
+li a{
+  text-decoration:none;
+ }
+li a:hover{
+  background: #ff0000; color: #03c; text-decoration:none;
+}
+.center{
+ text-align: center;
+ font-family:"Trebuchet MS", Helvetica, sans-serif;
+}
+.blue{
+  color: white;
+  background-color: black;
+}
+.red{
+  color: black;
+  background-color: white;
+}
+.twelve{
+  font-size: 20px;
+}
+.s2{
+  color: #03c;
+  font-family: "Times New Roman", Times, serif;
+  cursor: url('pineapple.cur'), auto;
+}
+input[type=text] {
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+	</style>
+<style>
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #1a6059;
+}
+
+.dropdown {
+    position: relative;
+    display: inline;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #000;
+    overflow: auto;
+    padding: 5.3px;
+}
+
+.dropdown-content a {
+    padding: 1px 1px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #f1f1f1}
+
+.show {display:inline-flex;}
+	
+.buttontoggle{
+	    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+	}
+.buttontoggle:hover{
+	background-color: Red;
+	color: #03c;
+	}
+</style>
+	<script type="text/javascript">
+		var audio;
+var playlist;
+var tracks;
+var current;
+
+function init(){
+    current = 0;
+    audio = $('audio');
+    playlist = $('#playlist');
+    tracks = playlist.find('li a');
+    len = tracks.length - 1;
+    audio[0].volume = .10;
+    playlist.find('a').click(function(e){
+        e.preventDefault();
+        link = $(this);
+        current = link.parent().index();
+        run(link, audio[0]);
+    });
+    audio[0].addEventListener('ended',function(e){
+        current++;
+        if(current == len){
+            current = 0;
+            link = playlist.find('a')[0];
+        }else{
+            link = playlist.find('a')[current];
+        }
+        run($(link),audio[0]);
+    });
+}
+function run(link, player){
+        player.src = link.attr('href');
+        par = link.parent();
+        par.addClass('active').siblings().removeClass('active');
+        audio[0].load();
+        audio[0].play();
+}
+	</script>
+  <script type="text/javascript">
+    function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+  </script>
+  <script>
+       $(document).ready(function() {
+    $("#search").keypress(function(e){
+      if (e.keyCode == 13) {
+       e.preventDefault();
+       if ($("#search").val()== "A Car, a Torch, a Death") {
+       window.location.href ="A Car, a Torch, a Death.mp3"
+       }
+       else if ($("#search").val()== "Addict With A Pen") {
+              window.location.href ="Addict With A Pen.mp3"
+      }
+      else if ($("#search").val()== "Air Catcher") {
+              window.location.href ="Air Catcher.mp3"
+      }
+      else if ($("#search").val()== "Anathema") {
+              window.location.href ="Anathema.mp3"
+      }
+      else if ($("#search").val()== "Be Concerned") {
+              window.location.href ="Be Concerned.mp3"
+      }
+      else if ($("#search").val()== "Before You Start Your Day") {
+              window.location.href ="Before You Start Your Day.mp3"
+      }
+      else if ($("#search").val()== "Can't Help Falling in Love") {
+              window.location.href ="Can't Help Falling in Love.mp3"
+      }
+      else if ($("#search").val()== "Cancer") {
+              window.location.href ="Cancer.mp3"
+      }
+      else if ($("#search").val()== "Car Radio") {
+              window.location.href ="Car Radio.mp3"
+      }
+       else if ($("#search").val()== "Clear") {
+              window.location.href ="Clear.mp3"
+      }
+      else if ($("#search").val()== "Doubt") {
+              window.location.href ="Doubt.mp3"
+      }
+      else if ($("#search").val()== "Fairly Local") {
+              window.location.href ="Fairly Local.mp3"
+      }
+      else if ($("#search").val()== "Fake You Out") {
+              window.location.href ="Fake You Out.mp3"
+      }
+      else if ($("#search").val()== "Fall Away") {
+              window.location.href ="Fall Away.mp3"
+      }
+      else if ($("#search").val()== "Forest") {
+              window.location.href ="Forest.mp3"
+      }
+      else if ($("#search").val()== "Friend, Please") {
+              window.location.href ="Friend, Please.mp3"
+      }
+      else if ($("#search").val()== "Glowing Eyes") {
+              window.location.href ="Glowing Eyes.mp3"
+      }
+      else if ($("#search").val()== "Goner Original") {
+              window.location.href ="Goner Original.mp3"
+      }
+      else if ($("#search").val()== "Goner") {
+              window.location.href ="Goner.mp3"
+      }
+      else if ($("#search").val()== "Guns for Hands") {
+              window.location.href ="Guns for Hands.mp3"
+      }
+      else if ($("#search").val()== "Heathens") {
+              window.location.href ="Heathens.mp3"
+      }
+      else if ($("#search").val()== "Heavy Dirty Soul") {
+              window.location.href ="Heavy Dirty Soul.mp3"
+      }
+      else if ($("#search").val()== "Holding On to You") {
+              window.location.href ="Holding On to You.mp3"
+      }
+      else if ($("#search").val()== "Hometown") {
+              window.location.href ="Hometown.mp3"
+      }
+      else if ($("#search").val()== "House Of Gold (Bonus Track)") {
+              window.location.href ="House Of Gold (Bonus Track).mp3"
+      }
+      else if ($("#search").val()== "House Of Gold") {
+              window.location.href ="House Of Gold.mp3"
+      }
+      else if ($("#search").val()== "Implicit Demand for Proof") {
+              window.location.href ="Implicit Demand for Proof.mp3"
+      }
+      else if ($("#search").val()== "Isle of Flightless Birds") {
+              window.location.href ="Isle of Flightless Birds.mp3"
+      }
+      else if ($("#search").val()== "Jar of Hearts") {
+              window.location.href ="Jar of Hearts.mp3"
+      }
+      else if ($("#search").val()== "Jonny Boy") {
+              window.location.href ="Jonny Boy.mp3"
+      }
+      else if ($("#search").val()== "Kitchen Sink") {
+              window.location.href ="Kitchen Sink.mp3"
+      }
+      else if ($("#search").val()== "Lane Boy") {
+              window.location.href ="Lane Boy.mp3"
+      }
+      else if ($("#search").val()== "Lovely (original)") {
+              window.location.href ="Lovely (original).mp3"
+      }
+      else if ($("#search").val()== "Lovely") {
+              window.location.href ="Lovely.mp3"
+      }
+      else if ($("#search").val()== "Mad World") {
+              window.location.href ="Mad World.mp3"
+      }
+      else if ($("#search").val()== "March to the Sea") {
+              window.location.href ="March to the Sea.mp3"
+      }
+      else if ($("#search").val()== "Message Man") {
+              window.location.href ="Message Man.mp3"
+      }
+      else if ($("#search").val()== "Migraine") {
+              window.location.href ="Migraine.mp3"
+      }
+      else if ($("#search").val()== "Not Today") {
+              window.location.href ="Not Today.mp3"
+      }
+      else if ($("#search").val()== "Ode to Sleep (original)") {
+              window.location.href ="Ode to Sleep (original).mp3"
+      }
+      else if ($("#search").val()== "Ode To Sleep") {
+              window.location.href ="Ode To Sleep.mp3"
+      }
+      else if ($("#search").val()== "Oh, Ms Believer") {
+              window.location.href ="Oh, Ms Believer.mp3"
+      }
+      else if ($("#search").val()== "Polarize") {
+              window.location.href ="Polarize.mp3"
+      }
+      else if ($("#search").val()== "Ride") {
+              window.location.href ="Ride.mp3"
+      }
+      else if ($("#search").val()== "Ruby") {
+              window.location.href ="Ruby.mp3"
+      }
+      else if ($("#search").val()== "Screen") {
+              window.location.href ="Screen.mp3"
+      }
+      else if ($("#search").val()== "Semi-Automatic") {
+              window.location.href ="Semi-Automatic.mp3"
+      }
+      else if ($("#search").val()== "Slowtown") {
+              window.location.href ="Slowtown.mp3"
+      }
+      else if ($("#search").val()== "Stressed Out") {
+              window.location.href ="Stressed Out.mp3"
+      }
+      else if ($("#search").val()== "Taxi Cab") {
+              window.location.href ="Taxi Cab.mp3"
+      }
+      else if ($("#search").val()== "Tear in My Heart") {
+              window.location.href ="Tear in My Heart.mp3"
+      }
+      else if ($("#search").val()== "The Judge") {
+              window.location.href ="The Judge.mp3"
+      }
+      else if ($("#search").val()== "The Pantaloon") {
+              window.location.href ="The Pantaloon.mp3"
+      }
+      else if ($("#search").val()== "The Run And Go") {
+              window.location.href ="The Run And Go.mp3"
+      }
+      else if ($("#search").val()== "Time to Say Goodbye") {
+              window.location.href ="Time to Say Goodbye.mp3"
+      }
+      else if ($("#search").val()== "Trapdoor") {
+              window.location.href ="Trapdoor.mp3"
+      }
+      else if ($("#search").val()== "Trees") {
+              window.location.href ="Trees.mp3"
+      }
+      else if ($("#search").val()== "Truce") {
+              window.location.href ="Truce.mp3"
+      }
+      else if ($("#search").val()== "Two") {
+              window.location.href ="Two.mp3"
+      }
+      else if ($("#search").val()== "We Don't Believe What's On TV") {
+              window.location.href ="We Don't Believe What's On TV.mp3"
+      }
+       else if ($("#search").val()== "Mobile") {
+              window.location.href ="21_Playlists_Mobile.html"
+      }
+       else {
+             alert("Not a song, sorry!");
+      }
+      }
+         });
+});
+  </script>
+	<script>
+$(document).ready(function(){
+    $("#show").click(function(){
+        $("#playlist").toggle();
+    });
+});
+</script>
+</head>
+<body class="image">
+<h1 class="center"><div class="blue">21</div><div class="red">Playlists<div><div class="blue twelve">By <a class="s2" href="https://github.com/apineapple">Apineapple</a></div></h1>
+<audio id="audio" preload="auto" tabindex="0" controls="" >
+  <source src="Fall Away.mp3">
+ Fall Away
+</audio>
+<div class="scroll">
+<ul id="playlist">
+        <li>
+            <a style="border-top:solid; border-color:#03c"; href="A Car, a Torch, a Death.mp3">
+                A Car, a Torch, a Death
+            </a>
+        </li>
+        <li>
+            <a href="Addict With A Pen.mp3">
+                Addict With A Pen
+            </a>
+        </li>
+        <li>
+            <a href="Air Catcher.mp3">
+                Air Catcher
+            </a>
+        </li>
+        <li>
+            <a href="Anathema.mp3">
+               Anathema
+            </a>
+        </li>
+        <li>
+            <a href="Be Concerned.mp3">
+               Be Concerned
+            </a>
+        </li>
+        <li>
+            <a href="Before You Start Your Day.mp3">
+               Before You Start Your Day
+            </a>
+        </li>
+        <li>
+            <a href="Can't Help Falling in Love.mp3">
+               Can't Help Falling in Love
+            </a>
+        </li>
+        <li>
+            <a href="Cancer.mp3">
+               Cancer
+            </a>
+        </li>
+        <li>
+            <a href="Car Radio.mp3">
+               Car Radio
+            </a>
+        </li>
+        <li>
+            <a href="Clear.mp3">
+               Clear
+            </a>
+        </li>
+        <li>
+            <a href="Doubt.mp3">
+               Doubt
+            </a>
+        </li>
+        <li>
+            <a href="Fairly Local.mp3">
+               Fairly Local
+            </a>
+        </li>
+        <li>
+            <a href="Fake You Out.mp3">
+               Fake You Out
+            </a>
+        </li>
+        <li class="active">
+            <a href="Fall Away.mp3">
+                Fall Away
+            </a>
+        </li>
+        <li>
+         <a href="Forest.mp3">
+               Forest
+            </a>
+        </li>
+         <li>
+            <a href="Friend, Please.mp3">
+               Friend, Please
+            </a>
+        </li>
+        <li>
+            <a href="Glowing Eyes.mp3">
+               Glowing Eyes
+            </a>
+        </li>
+        <li>
+            <a href="Goner Original.mp3">
+               Goner Original
+            </a>
+        </li>
+        <li>
+         <a href="Goner.mp3">
+                Goner
+            </a>
+        </li>
+        <li>
+            <a href="Guns for Hands.mp3">
+                Guns for Hands
+            </a>
+        </li>
+        <li>
+            <a href="Heathens.mp3">
+                Heathens
+            </a>
+        </li>
+        <li>
+            <a href="Heavy Dirty Soul.mp3">
+               Heavy Dirty Soul
+            </a>
+        </li>
+        <li>
+            <a href="Holding On to You.mp3">
+            Holding On to You
+            </a>
+        </li>
+        <li>
+            <a href="Hometown.mp3">
+               Hometown
+            </a>
+        </li>
+        <li>
+            <a href="House Of Gold (Bonus Track).mp3">
+               House Of Gold (Bonus Track)
+            </a>
+        </li>
+        <li>
+            <a href="House Of Gold.mp3">
+               House Of Gold
+            </a>
+        </li>
+        <li>
+            <a href="Implicit Demand for Proof.mp3">
+               Implicit Demand for Proof
+            </a>
+        </li>
+        <li>
+            <a href="Isle of Flightless Birds.mp3">
+               Isle of Flightless Birds
+            </a>
+        </li>
+        <li>
+            <a href="Jar of Hearts.mp3">
+               Jar of Hearts
+            </a>
+        </li>
+        <li>
+              <a href="Johnny Boy.mp3">
+               Johnny Boy
+            </a>
+        </li>
+        <li>
+            <a href="Kitchen Sink.mp3">
+               Kitchen Sink
+            </a>
+        </li>
+        <li>
+            <a href="Lane Boy.mp3">
+               Lane Boy??
+            </a>
+        </li>
+        <li>
+            <a href="Lovely (original).mp3">
+              Lovely (original)
+            </a>
+        </li>
+        <li>
+            <a href="Lovely.mp3">
+               Lovely
+            </a>
+        </li>
+        <li>
+            <a href="Mad World.mp3">
+               Mad World
+            </a>
+        </li>
+        <li>
+            <a href="March to the Sea.mp3">
+              March to the Sea
+            </a>
+        </li>
+        <li>
+            <a href="Message Man.mp3">
+               Message Man
+            </a>
+        </li>
+        <li>
+            <a href="Migraine.mp3">
+               Migraine
+            </a>
+        </li>
+        <li>
+            <a href="Not Today.mp3">
+               Not Today
+            </a>
+        </li>
+        <li>
+            <a href="Ode to Sleep (original).mp3">
+              Ode to Sleep (original)
+            </a>
+        </li>
+        <li>
+            <a href="Ode To Sleep.mp3">
+               Ode To Sleep
+            </a>
+        </li>
+        <li>
+            <a href="Oh, Ms Believer.mp3">
+               Oh, Ms Believer
+            </a>
+        </li>
+        <li>
+            <a href="Polarize.mp3">
+               Polarize
+            </a>
+        </li>
+        <li>
+            <a href="Ride.mp3">
+               Ride
+            </a>
+        </li>
+        <li>
+            <a href="Ruby.mp3">
+               Ruby
+            </a>
+        </li>
+        <li>
+            <a href="Screen.mp3">
+               Screen
+            </a>
+        </li>
+        <li>
+            <a href="Semi-Automatic.mp3">
+               Semi-Automatic
+            </a>
+        </li>
+        <li>
+            <a href="Slowtown.mp3">
+              Slowtown
+            </a>
+        </li>
+        <li>
+            <a href="Stressed Out.mp3">
+               Stressed Out
+            </a>
+        </li>
+        <li>
+            <a href="Taxi Cab.mp3">
+               Taxi Cab
+            </a>
+        </li>
+        <li>
+         <a href="Tear in My Heart.mp3">
+          Tear in My Heart
+         </a>
+        </li>
+        <li>
+         <a href="The Judge.mp3">
+          The Judge
+         </a>
+        </li>
+        <li>
+         <a href="The Pantaloon.mp3">
+          The Pantaloon
+         </a>
+        </li>
+        <li>
+          <a href="The Run And Go.mp3">
+            The Run And Go
+            </a>
+        </li>
+        <li>
+          <a href="Time to Say Goodbye.mp3">
+           Time to Say Goodbye
+          </a>
+        </li>
+        <li>
+         <a href="Trapdoor.mp3">
+        Trapdoor
+        </a>
+        </li>
+        <li>
+        <a href="Trees.mp3">
+         Trees
+        </a>
+        </li>
+        <li>
+        <a href="Truce.mp3">
+           Truce
+        </a>
+        </li>
+        <li>
+      <a href="Two.mp3">
+        Two
+        </a>
+      </li>
+      <li>
+      <a style="border-bottom:solid; border-color:#03c"; href="We Don't Believe What's On TV.mp3">
+        We Don't Believe What's On TV
+        </a>
+      </li>
+ </ul>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<script>
+  init();
+</script>
+<div class="dropdown">
+<button id="show" ondblclick="myFunction()" class="buttontoggle">T/S</button>
+    <form  id="myDropdown" class="dropdown-content">
+         <input type="text" id="search" name="search" placeholder="Search..">
+      </form>
+</div>
+</body>
+</html>

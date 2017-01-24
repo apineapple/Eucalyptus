@@ -1,0 +1,51 @@
+h2{
+    
+    color: white;
+    text-indent: 50px;
+}
+
+.sky{
+    color: #0040ff;
+    display: inline;
+}
+
+.lime{
+    color: #32CD32;
+    display: inline;
+}
+
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+}
+
+input[type=text]{
+    width: 80%;
+    margin-left:100px;
+}
+input[type=file]
+{
+    margin: auto;
+}
+#get{
+    background-color: black;
+}
+
+
+.center{
+    text-align: center;
+}
+.black{
+    background-color: black;
+}
+
+.hover:hover{
+    color: black;
+}
